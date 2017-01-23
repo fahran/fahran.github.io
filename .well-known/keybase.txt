@@ -1,0 +1,69 @@
+==================================================================
+https://keybase.io/fahran
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://fahran.net
+  * I am fahran (https://keybase.io/fahran) on keybase.
+  * I have a public key with fingerprint BDBE 3BB8 C1DB 0890 6750  69FA C4EC 5884 5B32 9373
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "010160827fe70c5c721b16b99a00b4a0c932a4c802b4ff13e67bf992d111026330a70a",
+            "fingerprint": "bdbe3bb8c1db0890675069fac4ec58845b329373",
+            "host": "keybase.io",
+            "key_id": "c4ec58845b329373",
+            "kid": "010160827fe70c5c721b16b99a00b4a0c932a4c802b4ff13e67bf992d111026330a70a",
+            "uid": "96abae79e2cfcffb682950a60d98d319",
+            "username": "fahran"
+        },
+        "service": {
+            "hostname": "fahran.net",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1485167734,
+    "expire_in": 157680000,
+    "prev": "ca8912b4fdfde2e77eef9794cc45d6896a886150984c16a3a15e1044382d117d",
+    "seqno": 9,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.62
+Comment: https://keybase.io/crypto
+
+yMIdAnicrVJdSFRBGF21sjXERKEiKbplkJjM3P/Z8iHpRexFox8p2mbmzt29qXe3
+u9fdFhGKfqGENCJKsEJqKzIQKiHDSvqh8iEwQ7w++KRSKoRIRm11r9RD0GPzMsw3
+55w55zDPc7N8ORk7/dNvZz9+qcp4+6yt0bf35Gi8iSMRLckFmrg6trCxeo3F7GCd
+oXEBDkAAZaDyis4UQCWq8JBAmSCEASAiBhQJPBapCngi6joUmKwQHSFegxACXhYE
+gBWAuVJON8wQs6KWYdquLNEIEwhRKdQIUBGQFQnISMdUZFRSVVEiAo8ERXCJ4UjM
+Y7jmCI6xMiPiztxDcMHeP/D/2XfjghySMcFMQYynOtV1Iqs8kgCWgYZUTYDIA8aY
+ZeIG5qJ1HLawyTWXcu4sblDm1erl+Ou+zGS2y4taETtCI/XuPGzb0YBHs5NRD5dg
+JPhbIUgMU3MrdAlxZsWMiMkFoIuktuFJQlGVoKwogljKsSNRw2JBw0NIiqwCd3nP
+sLhXGFYR9DJrusZ4piiM6UhBIqWipMmqm1NVZSgBpIoUyljAUGIQiKKgetUoGudl
+OmxGuABybeKQKxkzQia2Gy3GNfc/3b/Il5HjW7I40/tavhz/8j8fLjSfnc7/tj09
+finxbqRqQ2X5xsNzezqKVt16MNSTtbm2GORUhM7eT6U+HaP+XMdxEk2phzPTm15Z
+0fbUo0c3h99/LVq/ZeTJAVLz+MUuGI7d7SsZe5lH1+Zd666b6yzwZ57LLRqeapjY
+er1vsHtonfT69KzTVB76kHL29kzdPn80faOlYl93Zv/KgfzkYLzy88F74bZq7Uet
+f9sU7uxtX31mB/u5Zv7i98qB44WHaqiTePBtMRKuSmuyB41lVZ2JhtG5y3fSM+nk
+XP908e4uZ4adSOTldRRcmLw0tpS2FNqtJa2LZvd3XnmT5Qw6k9Wnuu7WOnvIeNeq
+ryvaN00kk+W9478AKmtIgA==
+=bTth
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/fahran
+
+==================================================================
+
