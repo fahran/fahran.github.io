@@ -17,7 +17,7 @@
             var songText = document.getElementById('input');
             songText.oninput = chordGen;
             songText.onpropertychange = songText.oninput; // for IE8
-            songText.onchange = songText.oninput; // FF needs this in <select><option>...
+            songText.onchange = songText.oninput;         // FF needs this in <select><option>...
         };
 
 
@@ -27,7 +27,7 @@
             var matches = [];
 
             while (matches = chordRegex.exec(event.currentTarget.value)) {
-                chordSet.add(matches[1]);
+                chordSet.add(normalize(matches[1]));
             }
 
             var newChords = Array.from(chordSet).sort();
@@ -46,6 +46,12 @@
                 img.setAttribute("src", "uketool/chords/" + chord + ".gif");
                 output.appendChild(img);
             }
+        }
+
+        function normalize(chord) {
+            chord = chord.replace("/", "slash");
+            chord = chord.replace("#", "sharp");
+            return chord;
         }
     </script>
 </body>
