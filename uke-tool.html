@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Uke Tool</title>
+    <link rel="stylesheet" href="uketool/style.css">
+</head>
+
+<body>
+    <h1>Ukelele Chord Diagram Generator</h1>
+    <textarea id="input"></textarea>
+    <section id="output" />
+    <script type="text/javascript">
+        var chords = [];
+
+        onload = function() {
+            var songText = document.getElementById('input');
+            songText.oninput = chordGen;
+            songText.onpropertychange = songText.oninput; // for IE8
+            songText.onchange = songText.oninput; // FF needs this in <select><option>...
+        };
+
+
+        function chordGen(event) {
+            var chordRegex = new RegExp('\\((.*?)\\)', 'g');
+            var chordSet = new Set();
+            var matches = [];
+
+            while (matches = chordRegex.exec(event.currentTarget.value)) {
+                chordSet.add(matches[1]);
+            }
+
+            var newChords = Array.from(chordSet).sort();
+            if (newChords != chords) {
+                chords = newChords;
+                drawCurrentChords();
+            }
+
+        }
+
+        function drawCurrentChords() {
+            var output = document.getElementById("output")
+            output.innerHTML = '';
+            for (let chord of chords) {
+                var img = document.createElement("img")
+                img.setAttribute("src", "uketool/chords/" + chord + ".gif");
+                output.appendChild(img);
+            }
+        }
+    </script>
+</body>
+
+</html>

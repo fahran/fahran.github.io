@@ -1,0 +1,22 @@
+body {
+    padding: 30px;
+    background-color: #fcfcfc;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+h1 {
+    text-align: center;
+}
+
+#input {
+    width: 60%;
+    margin: 20px auto;
+    height: 600px;
+    display: block;
+    padding: 20px;
+}
+
+#output {
+    margin: 0 auto;
+    text-align: center;
+}
