@@ -2,32 +2,100 @@
 <html>
 
 <head>
-    <title>Uke Tool</title>
+    <title>Uke Chord-o-matic</title>
     <link rel="stylesheet" href="uketool/style.css">
 </head>
 
 <body>
-    <h1>Ukelele Chord Diagram Generator</h1>
-    <textarea id="input"></textarea>
-    <section id="output" />
+    <h1>Ukelele Chord-O-Matic</h1>
+    <div id="input" contenteditable="true" spellcheck="false"></div>
+
+    <section id="output"/>
     <script type="text/javascript">
         var chords = [];
 
         onload = function() {
             var songText = document.getElementById('input');
-            songText.oninput = chordGen;
+            songText.oninput = markUpChords;
             songText.onpropertychange = songText.oninput; // for IE8
             songText.onchange = songText.oninput;         // FF needs this in <select><option>...
         };
 
+        function markUpChords(event) {
+            setCaretPositionMarker();
+            unwrapTags("chord");
+            unwrapTags("section-tag");
+            var chordRegex = new RegExp('(\\((.*?)\\))', 'g');
+            event.currentTarget.innerHTML = event.currentTarget.innerHTML.replace(chordRegex, '<span class="chord">$1</span>');
+            var sectionTagRegex = new RegExp('(\\[(.*?)\\])', 'g');
+            event.currentTarget.innerHTML = event.currentTarget.innerHTML.replace(sectionTagRegex, '<span class="section-tag">$1</span>');
+            moveCaretBack();
+            updateChordDiagrams();
+        } 
 
-        function chordGen(event) {
-            var chordRegex = new RegExp('\\((.*?)\\)', 'g');
+        function unwrapTags(type) {
+            var elements = document.getElementsByClassName(type)
+            while (elements[0]) {
+                elements[0].replaceWith(...elements[0].childNodes)
+            };
+        }
+
+        function setCaretPositionMarker() {
+            var currentCaret = document.getElementById("caretPosition");
+            if (currentCaret) {
+                currentCaret.outerHTML = "";
+            }
+
+            var sel, range;
+            if (window.getSelection) {
+                // IE9 and non-IE
+                sel = window.getSelection();
+                if (sel.getRangeAt && sel.rangeCount) {
+                    range = sel.getRangeAt(0);
+                    range.deleteContents();
+
+                    // Range.createContextualFragment() would be useful here but is
+                    // only relatively recently standardized and is not supported in
+                    // some browsers (IE9, for one)
+                    var caretMarker = document.createElement("span");
+                    caretMarker.id = "caretPosition";
+                    var frag = document.createDocumentFragment(), lastNode;
+                    lastNode = frag.appendChild(caretMarker);
+                    range.insertNode(frag);
+
+                    // Preserve the selection
+                    if (lastNode) {
+                        range = range.cloneRange();
+                        range.setStartAfter(lastNode);
+                        range.collapse(true);
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                    }
+                }
+            } else if (document.selection && document.selection.type != "Control") {
+                // IE < 9
+                document.selection.createRange().pasteHTML(html);
+            }
+        }
+
+        function moveCaretBack() {
+            var currentCaret = document.getElementById("caretPosition");
+            var range = new Range()
+            range.setStartBefore(currentCaret);
+            var sel = window.getSelection();
+            if (sel) {
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+        }
+
+        function updateChordDiagrams(event) {
+            var chordElements = document.getElementsByClassName("chord")
             var chordSet = new Set();
             var matches = [];
 
-            while (matches = chordRegex.exec(event.currentTarget.value)) {
-                chordSet.add(normalize(matches[1]));
+            for (let i = 0; i < chordElements.length; i++) {
+                chordSet.add(normalizeChordName(chordElements[i].innerText));
             }
 
             var newChords = Array.from(chordSet).sort();
@@ -48,7 +116,9 @@
             }
         }
 
-        function normalize(chord) {
+        function normalizeChordName(chord) {
+            chord = chord.replace("(", "");
+            chord = chord.replace(")", "");
             chord = chord.replace("/", "slash");
             chord = chord.replace("#", "sharp");
             return chord;
