@@ -9,16 +9,21 @@ h1 {
 }
 
 #input {
-    width: 60%;
-    margin: 20px auto;
+    width: 100%;
     min-height: 300px;
-    display: block;
+    margin: 20px auto;
     padding: 20px;
+    display: inline-block;
+    white-space: pre-wrap;
     border-color: rgb(169, 169, 169);
     border-width: 1px;
     border-style: solid;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    white-space: pre-wrap;
+}
+
+#wrap {
+    margin: 0 auto;
+    width: 60%;
 }
 
 #output {
