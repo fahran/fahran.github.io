@@ -23,10 +23,10 @@ h1 {
 
 #wrap {
     margin: 0 auto;
-    width: 60%;
+    width: 80%;
 }
 
-#output {
+#chord-diagrams {
     margin: 0 auto;
     text-align: center;
 }
