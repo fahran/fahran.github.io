@@ -28,9 +28,11 @@
             unwrapTags("chord");
             unwrapTags("section-tag");
             var chordRegex = new RegExp('(\\((.*?)\\))', 'g');
-            event.currentTarget.innerHTML = event.currentTarget.innerHTML.replace(chordRegex, '<span class="chord">$1</span>');
+            var newInnerHTML = event.currentTarget.textContent.replace(chordRegex, '<span class="chord">$1</span>');
             var sectionTagRegex = new RegExp('(\\[(.*?)\\])', 'g');
-            event.currentTarget.innerHTML = event.currentTarget.innerHTML.replace(sectionTagRegex, '<span class="section-tag">$1</span>');
+            newInnerHTML = newInnerHTML.replace(sectionTagRegex, '<span class="section-tag">$1</span>');
+            var caretRegex = new RegExp('bobTheCaretMarker', 'g');
+            event.currentTarget.innerHTML = newInnerHTML.replace(caretRegex, '<span id="caret-marker">bobTheCaretMarker</span>');
             moveCaretBack();
             updateChordDiagrams();
         } 
@@ -43,7 +45,7 @@
         }
 
         function setCaretPositionMarker() {
-            var currentCaret = document.getElementById("caretPosition");
+            var currentCaret = document.getElementById("caret-marker");
             if (currentCaret) {
                 currentCaret.outerHTML = "";
             }
@@ -60,7 +62,8 @@
                     // only relatively recently standardized and is not supported in
                     // some browsers (IE9, for one)
                     var caretMarker = document.createElement("span");
-                    caretMarker.id = "caretPosition";
+                    caretMarker.id = "caret-marker";
+                    caretMarker.innerHTML = "bobTheCaretMarker"
                     var frag = document.createDocumentFragment(), lastNode;
                     lastNode = frag.appendChild(caretMarker);
                     range.insertNode(frag);
@@ -81,7 +84,7 @@
         }
 
         function moveCaretBack() {
-            var currentCaret = document.getElementById("caretPosition");
+            var currentCaret = document.getElementById("caret-marker");
             var range = new Range()
             range.setStartBefore(currentCaret);
             var sel = window.getSelection();

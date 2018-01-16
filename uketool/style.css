@@ -38,3 +38,8 @@ h1 {
 .section-tag {
     font-weight: bold;
 }
+
+#caret-marker {
+    width: 0;
+    display: none;
+}
