@@ -12,14 +12,21 @@ onload = function() {
 
 function markUpChords(event) {
     setCaretPositionMarker();
-    unwrapTags("chord");
-    unwrapTags("section-tag");
-    var chordRegex = new RegExp('(\\((.*?)\\))', 'g');
+
+    var chordRegex = /(\((.*?)\))/g;
     var newInnerHTML = event.currentTarget.textContent.replace(chordRegex, '<span class="chord">$1</span>');
-    var sectionTagRegex = new RegExp('(\\[(.*?)\\])', 'g');
+    var sectionTagRegex = /(\[(.*?)\])/g;
     newInnerHTML = newInnerHTML.replace(sectionTagRegex, '<span class="section-tag">$1</span>');
+
     var caretRegex = new RegExp(caretMarkerText, 'g');
-    event.currentTarget.innerHTML = newInnerHTML.replace(caretRegex, '<span id="' + caretMarkerId + '">' + caretMarkerText + '</span>');
+    newInnerHTML = newInnerHTML.replace(caretRegex, '<span class="caret" id="' + caretMarkerId + '">' + caretMarkerText + '</span>');
+
+    var titleRegex = /(^.*)/;
+    newInnerHTML = newInnerHTML.replace(titleRegex, '<h3 class="title">$1</h3>');
+
+    event.currentTarget.innerHTML = newInnerHTML;
+    
+
     moveCaretBack();
     updateChordDiagrams();
 }
@@ -114,4 +121,21 @@ function normalizeChordName(chord) {
     chord = chord.replace("/", "slash");
     chord = chord.replace("#", "sharp");
     return chord;
+}
+
+// var fsus4 = new Chord("Fsus4");
+
+class Chords {
+    
+    constructor(fullName) {
+        // this.root = F or F# or Fb
+    }
+}
+
+class ChordRoot {
+    constructor(uhh) {
+        this.isNatural
+        this.rootNote = uhh.letter;
+
+    }
 }
