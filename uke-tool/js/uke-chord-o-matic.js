@@ -1,7 +1,7 @@
 var chords = [];
 var chordDirectory = "uke-tool/chords/";
 var caretMarkerId = "caret-marker";
-var caretMarkerText = "bobTheCaretMarker";
+var caretMarkerText = "​";
 var transposedSemitones = 0;
 var allChords = ['Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G'];
 
