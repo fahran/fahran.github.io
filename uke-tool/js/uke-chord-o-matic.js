@@ -2,19 +2,46 @@ var chords = [];
 var chordDirectory = "uke-tool/chords/";
 var caretMarkerId = "caret-marker";
 var caretMarkerText = "bobTheCaretMarker";
+var transposedSemitones = 0;
+var allChords = ['Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G'];
 
 onload = function() {
     var songText = document.getElementById('input');
-    songText.oninput = markUpChords;
+    songText.oninput = markUpChordsEvent;
     songText.onpropertychange = songText.oninput; // for IE8
     songText.onchange = songText.oninput;         // FF needs this in <select><option>...
 };
 
-function markUpChords(event) {
+document.getElementById('shift-up').addEventListener('click', function(event) {
+    transposedSemitones +=1;
+    shiftTheChords(1);
+});
+
+document.getElementById('shift-down').addEventListener('click', function(event) {
+    transposedSemitones -=1;
+    shiftTheChords(-1);
+});
+
+function shiftTheChords(semitones) {
+    var chordElements = document.getElementsByClassName("chord");
+    for (var i = 0; i < chordElements.length; i++) {
+        var chordRootRegex = /\(([ABCDEFG][#b]?)/
+        var chordRoot = chordElements[i].textContent.match(chordRootRegex)[1];
+        var newChordRoot = allChords[(allChords.indexOf(chordRoot) + semitones + allChords.length) % allChords.length];
+        chordElements[i].innerText = chordElements[i].textContent.replace(chordRootRegex, '(' + newChordRoot);
+    }
+    markUpChords(document.getElementById('input'));
+}
+
+function markUpChordsEvent(event) {
+    markUpChords(event.currentTarget);
+}
+
+function markUpChords(targetElement) {
     setCaretPositionMarker();
 
     var chordRegex = /(\((.*?)\))/g;
-    var newInnerHTML = event.currentTarget.textContent.replace(chordRegex, '<span class="chord">$1</span>');
+    var newInnerHTML = targetElement.textContent.replace(chordRegex, '<span class="chord">$1</span>');
     var sectionTagRegex = /(\[(.*?)\])/g;
     newInnerHTML = newInnerHTML.replace(sectionTagRegex, '<span class="section-tag">$1</span>');
 
@@ -24,7 +51,7 @@ function markUpChords(event) {
     var titleRegex = /(^.*)/;
     newInnerHTML = newInnerHTML.replace(titleRegex, '<h3 class="title">$1</h3>');
 
-    event.currentTarget.innerHTML = newInnerHTML;
+    targetElement.innerHTML = newInnerHTML;
     
 
     moveCaretBack();
