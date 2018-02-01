@@ -10,6 +10,7 @@ onload = function() {
     songText.oninput = markUpChordsEvent;
     songText.onpropertychange = songText.oninput; // for IE8
     songText.onchange = songText.oninput;         // FF needs this in <select><option>...
+    listSongs();
 };
 
 document.getElementById('shift-up').addEventListener('click', function(event) {
@@ -52,7 +53,6 @@ function markUpChords(targetElement) {
     newInnerHTML = newInnerHTML.replace(titleRegex, '<h3 class="title">$1</h3>');
 
     targetElement.innerHTML = newInnerHTML;
-    
 
     moveCaretBack();
     updateChordDiagrams();
@@ -107,12 +107,15 @@ function setCaretPositionMarker() {
 function moveCaretBack() {
     var currentCaret = document.getElementById(caretMarkerId);
     var range = new Range()
-    range.setStartBefore(currentCaret);
-    var sel = window.getSelection();
-    if (sel) {
-        sel.removeAllRanges();
-        sel.addRange(range);
+    if (currentCaret) {
+        range.setStartBefore(currentCaret);
+        var sel = window.getSelection();
+        if (sel) {
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
     }
+    
 }
 
 function updateChordDiagrams(event) {
@@ -148,21 +151,4 @@ function normalizeChordName(chord) {
     chord = chord.replace("/", "slash");
     chord = chord.replace("#", "sharp");
     return chord;
-}
-
-// var fsus4 = new Chord("Fsus4");
-
-class Chords {
-    
-    constructor(fullName) {
-        // this.root = F or F# or Fb
-    }
-}
-
-class ChordRoot {
-    constructor(uhh) {
-        this.isNatural
-        this.rootNote = uhh.letter;
-
-    }
 }
