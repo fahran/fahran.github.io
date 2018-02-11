@@ -4,32 +4,40 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Uke Chord-o-matic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="uke-tool/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
-    <h1>Ukelele Chord-O-Matic</h1>
+    <h1>Ukulele Chord-O-Matic</h1>
+    <ul id="songs" class="side-nav">
+        <li>
+            <h3>Songs</h3>
+        </li>
+        <li>
+            <a class="song-link">Pinball Prison Blues</a>
+        </li>
+    </ul>
+
+    <a href="#" data-activates="songs" class="button-collapse">
+        <i class="material-icons">library_music</i>
+    </a>
+
     <div id="wrap">
-        <div id="title" contenteditable="true" spellcheck="false"></div>
         <div id="input" contenteditable="true" spellcheck="false"></div>
     </div>
 
     <section id="chord-diagrams"></section>
-
-    <section id="library">
-        <h3>Songs</h3>
-        <ul id="songs">
-            <li>
-                <button class="song-button">Pinball Prison Blues</button>
-            </li>
-        </ul>
-    </section>
     <section id="transpose">
         <h3>Transpose?</h3>
         <button id="shift-up">UP</button>
         <button id="shift-down">DOWN</button>
     </section>
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="uke-tool/js/load-songs.js"></script>
     <script src="uke-tool/js/uke-chord-o-matic.js"></script>
 </body>

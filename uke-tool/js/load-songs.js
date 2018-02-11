@@ -1,5 +1,5 @@
 function listSongs() {
-    var songButtons = document.getElementsByClassName("song-button");
+    var songButtons = document.getElementsByClassName("song-link");
     for (var i = 0; i < songButtons.length; i++) {
         songButtons[i].onclick = loadSong;    
     }
@@ -16,3 +16,5 @@ function loadSong(event) {
     };
     http.send();
 }
+
+$(".button-collapse").sideNav();
