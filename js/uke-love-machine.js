@@ -30,3 +30,8 @@ document.getElementById("ukulele-love-trigger").onclick = function (event) {
     xmlHttp.send(null);
     console.log(xmlHttp.responseText);
 }
+
+document.getElementById("its-broken").onclick = function() {
+    document.cookie = "key=";
+    showKeySetting();
+}
