@@ -1,19 +1,25 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 900;    
     background-color: rgb(254,152,52);
 }
 
 h1 {
-    font-size: 5em;
+    font-size: 3.1em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
 }
 
 h2 {
-    font-size: 4em;
+    font-size: 2em;
 }
 
 h3 {
-    font-size: 2em;
+    font-size: 1.6em;
     font-family: 'Bungee Inline', cursive;
     font-weight: 400;    
 }
