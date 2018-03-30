@@ -4,6 +4,7 @@ var caretMarkerId = "caret-marker";
 var caretMarkerText = "​";
 var transposedSemitones = 0;
 var allChords = ['Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G'];
+var currentFormat = "wednesdays";
 
 onload = function() {
     var songText = document.getElementById('input');
@@ -23,6 +24,7 @@ document.getElementById('shift-down').addEventListener('click', function(event) 
     shiftTheChords(-1);
 });
 
+
 function shiftTheChords(semitones) {
     var chordElements = document.getElementsByClassName("chord");
     for (var i = 0; i < chordElements.length; i++) {
@@ -39,6 +41,11 @@ function markUpChordsEvent(event) {
 }
 
 function markUpChords(targetElement) {
+    if (document.getElementById("auto-convert-from-tab").checked) {
+        targetElement.textContent = format('standard-tab', 'wednesdays', targetElement.textContent);
+        document.getElementById("auto-convert-from-tab").checked = false;
+    }
+
     setCaretPositionMarker();
 
     var chordRegex = /(\((.*?)\))/g;
