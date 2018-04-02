@@ -65,8 +65,17 @@ h3 {
     display: none;
 }
 
-#transpose {
+.setting-section {
     text-align: center;    
+}
+
+.setting-section button {
+    display: block;
+    margin: 10px auto;
+}
+
+#transpose button {
+    display: inline-block;
 }
 
 #songs {
