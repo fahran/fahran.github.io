@@ -1,0 +1,46 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;    
+    background-color: rgb(231,151,63);
+}
+
+#weds-logo {
+    width: 30%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
+h1 {
+    margin: 5px auto;
+    display: block;
+    text-align: center;
+    font-size: 0.7em;
+}
+
+h2 {
+    margin: 5px auto;
+    display: block;
+    text-align: center;
+    font-size: 0.3em;
+}
+
+#loading-bar {
+    width: 70%;
+    height: 20px;
+    background-color: black;
+    margin: 10px auto;
+    border: 1px solid black;
+}
+
+.loading-section {
+    width: 25%;
+    height: 100%;
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+.loaded-section {
+    background-color: green;
+}
