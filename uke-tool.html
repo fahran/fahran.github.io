@@ -7,10 +7,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="uke-tool/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 
 <body>
-    <h1>Ukulele Chord-O-Matic</h1>
+
+
+        <a href="#" data-activates="songs" class="button-collapse">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </a>
+    <h1>Ukulele Chord-O-Matic <a class="btn-floating btn-medium waves-effect waves-light blue" id="help-button"><i class="material-icons">help_outline</i></a></h1>
+
     <ul id="songs" class="side-nav">
         <li>
             <h3>Songs</h3>
@@ -22,20 +31,36 @@
         </li>
     </ul>
 
-    <a href="#" data-activates="songs" class="button-collapse">
-        <i class="material-icons">library_music</i>
-    </a>
+    <section class="setting-section bullet-information closed" id="information">
+            <h3>How do I use the Chord-o-matic?</h3>
+            <p>
+                This is a tool to help you format songs in the <a href="https://sites.google.com/site/ukewednesdaycollaboration/song-format-template" target="_blank">Ukulele Wednesdays House Style. </a> Just type your song into the page, and a few things will happen:
+                <ul>
+                    <li>The title will automatically be formatted differently</li>
+                    <li>Chords surrounded by brackets, eg. <span class="chord">(G)</span>, will become bold, and a handy chord chart will appear at the bottom.</li>
+                    <li>Instructions surrounded by square brackes, eg. <b>[single strum]</b> will become bold too.</li>
+                    <li>Remember: this is very rough at the edges. Copy-paste somewhere else early and often, and please report bugs that annoy you <a href="https://github.com/fahran/fahran.github.io/issues">on Github.</a> </li>
+                </ul>
+                It's also got a few more advanced, and highly experimental features:
+                <ul>
+                    <li>A common format for tabbing up songs has the chords written on alternating lines, above the lyrics. If you already tabbed up a song like that, this will let you switch the the Uke Wednesdays format. Tick the <b>auto-convert</b> box, Paste without formatting for best results (Ctrl + Shift + V), and cross your fingers!</li>
+                    <li>To transpose your song, hit the Up and Down buttons in the <b>transposition</b> section. I don't have all possible chords yet, so some keys will work much better than others.</li>
+                </ul>
+
+                Good luck and have fun tabbing!
+            </p>
+        </section>
 
     <div id="wrap">
         <div id="input" contenteditable="true" spellcheck="false"></div>
     </div>
 
     <section id="chord-diagrams"></section>
+
     <section class="setting-section" id="formats">
         <h3>Format and Export</h3>
         <input type="checkbox" class="setting" id="auto-convert-from-tab">
         <label for="auto-convert-from-tab">Auto-convert from standard tab format</label>
-        <!-- <button id="print-button">Print</button> -->
     </section>
     <section class="setting-section" id="transpose">
         <h3>Transposition</h3>
@@ -43,11 +68,10 @@
         <button id="shift-down">DOWN</button>
     </section>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="uke-tool/js/animate-page.js"></script>
     <script src="uke-tool/js/song-format-converter.js"></script>
     <script src="uke-tool/js/uke-chord-o-matic.js"></script>
-    <script src="uke-tool/js/load-songs.js"></script>
+    <script src="uke-tool/js/load-songs.js"></script>    
 
     <script src="js/google-analytics.js"></script>
 </body>

@@ -17,6 +17,37 @@ h1 {
 h3 {
     font-size: 2em;
     font-weight: 600;
+    text-align: center;
+}
+
+.setting-section {
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 10%;
+}
+
+#information {
+    overflow-y: hidden;
+	max-height: 500px; /* approximate max height */
+
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+#information.closed {
+    max-height: 0;
+}
+
+
+.bullet-information {
+    list-style-type: disc;
+    text-align: left;
+}
+
+.bullet-information > ul > li {
+    list-style-type: disc;
+    text-align: left;
 }
 
 .title {
@@ -63,10 +94,6 @@ h3 {
 #caret-marker {
     width: 0;
     display: none;
-}
-
-.setting-section {
-    text-align: center;    
 }
 
 .setting-section button {
