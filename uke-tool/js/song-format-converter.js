@@ -20,7 +20,7 @@ function format(oldFormat, newFormat, text) {
 }
 
 function isChordLine(line) {
-    return line.match(/\s{5}/);
+    return line.match(/\s{5}/) || line.match(/^[A-G]b?#?m?(maj)?[1-9]?$/);
 }
 
 function interleaveChords(chords, lyrics) {
