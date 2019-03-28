@@ -83,7 +83,7 @@ h3 {
     text-align: center;
 }
 
-.chord {
+.chord, .dummy-chord {
     font-weight: bold;
 }
 
