@@ -7,6 +7,9 @@ function format(oldFormat, newFormat, text) {
         for (let i = 0; i < lines.length; i++) {
             var line = lines[i];
             if (isChordLine(line)) {
+                if (currentChordLine != null) {
+                    output += formatAllFragmentsAsChords(currentChordLine) + '\n';
+                }
                 currentChordLine = line;
             } else if (currentChordLine != null) {
                 output += interleaveChords(currentChordLine, line) + '\n'
@@ -20,7 +23,7 @@ function format(oldFormat, newFormat, text) {
 }
 
 function isChordLine(line) {
-    fragments = line.replace(/\s+/g, " ").trim().split(" ")
+    fragments = line.replace(/\s+/g, ' ').trim().split(' ')
     for (let i = 0; i < fragments.length; i++) {
         if(!isAChord(fragments[i])) {
             return false;
@@ -33,22 +36,34 @@ function isAChord(potentialChord) {
     return /[ABCDEFG][b#]?(m|dim|maj)?[79]?(sus[24])?/.test(potentialChord);
 }
 
+function formatAllFragmentsAsChords(line) {
+    var words = line.split(" ");
+    var output = "";
+    words.forEach(function(word) {
+     output += formatChord(word);    
+    });  
+    return output;
+}
+   
+function formatChord(chord) {
+    return "(" + chord + ")"
+}
+
 function interleaveChords(chords, lyrics) {
     var output = ""; 
-    var alreadyUsedChordCharsCount = 0;
-    for (let char = 0; char < lyrics.length; char++) {
-        if (chords[char] && chords[char] != " " && alreadyUsedChordCharsCount === 0) {
+    for (let lyricIndex = 0; lyricIndex < lyrics.length; lyricIndex++) {
+        if (chords[lyricIndex] && chords[lyricIndex] != " ") {
             var chordString = "";
-            for (let chordCharIndex = char; chordCharIndex < chords.length; chordCharIndex++) {
+            for (let chordCharIndex = lyricIndex; chordCharIndex < chords.length; chordCharIndex++) {
                 if (chords[chordCharIndex] === " ") break;
                 chordString += chords[chordCharIndex];
-                alreadyUsedChordCharsCount++;
             }
-            output += "(" + chordString + ")" + lyrics[char];
+            output += "(" + chordString + ")";
+            output += lyrics.slice(lyricIndex, lyricIndex+chordString.length)
+            lyricIndex += chordString.length - 1
         } else {
-            if (alreadyUsedChordCharsCount > 0) alreadyUsedChordCharsCount--;
-            output += lyrics[char];
+            output += lyrics[lyricIndex];
         }
     }
     return output;
-}
+};
