@@ -20,8 +20,17 @@ function format(oldFormat, newFormat, text) {
 }
 
 function isChordLine(line) {
-    line = line.replace(/\s*/g, '\s')
-    return line.match(/[ABCDEFG][b#]?(?:m|dim|maj)?[79]?(?:sus[24])?/);
+    fragments = line.replace(/\s+/g, " ").trim().split(" ")
+    for (let i = 0; i < fragments.length; i++) {
+        if(!isAChord(fragments[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function isAChord(potentialChord) {
+    return /[ABCDEFG][b#]?(m|dim|maj)?[79]?(sus[24])?/.test(potentialChord);
 }
 
 function interleaveChords(chords, lyrics) {
