@@ -48,7 +48,7 @@ function markUpChords(targetElement) {
 
     setCaretPositionMarker();
 
-    var chordRegex = /(\((.*?)\))/g;
+    var chordRegex = /(\(([ABCDEFG][b#]?(m|dim|maj)?[79]?(sus[24])?)\))/g;
     var newInnerHTML = targetElement.textContent.replace(chordRegex, '<span class="chord">$1</span>');
     var sectionTagRegex = /(\[(.*?)\])/g;
     newInnerHTML = newInnerHTML.replace(sectionTagRegex, '<span class="section-tag">$1</span>');

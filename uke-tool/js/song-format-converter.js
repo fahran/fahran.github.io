@@ -33,14 +33,19 @@ function isChordLine(line) {
 }
 
 function isAChord(potentialChord) {
-    return /[ABCDEFG][b#]?(m|dim|maj)?[79]?(sus[24])?/.test(potentialChord);
+    return /^[ABCDEFG][b#]?(m|dim|maj)?[79]?(sus[24])?$/.test(potentialChord);
 }
 
 function formatAllFragmentsAsChords(line) {
     var words = line.split(" ");
     var output = "";
     words.forEach(function(word) {
-     output += formatChord(word);    
+        if (word == "") {
+            output += " ";
+        } else {
+            output += formatChord(word);    
+        }
+         
     });  
     return output;
 }
@@ -50,7 +55,10 @@ function formatChord(chord) {
 }
 
 function interleaveChords(chords, lyrics) {
-    var output = ""; 
+    if (lyrics == "") {
+        return formatAllFragmentsAsChords(chords);
+    } else {
+        var output = ""; 
     for (let lyricIndex = 0; lyricIndex < lyrics.length; lyricIndex++) {
         if (chords[lyricIndex] && chords[lyricIndex] != " ") {
             var chordString = "";
@@ -65,5 +73,6 @@ function interleaveChords(chords, lyrics) {
             output += lyrics[lyricIndex];
         }
     }
-    return output;
+        return output;
+    }
 };
