@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transposition Quiz</title>
+    <script type="text/javascript" src="./js/google-analytics.js"></script>
+    <link rel="stylesheet" href="./css/transposition-quiz.css">
+
+</head>
+
+<body>
+    <div class="spacer"></div>
+    <div id="quizContainer">
+        <h1>Musical Transposition Quiz</h1>
+        <form id="quizForm" onsubmit="event.preventDefault(); checkAnswer();">
+            <p id="question"></p>
+            <input type="text" id="answer">
+            <button type="submit" class="btn">Submit Answer</button>
+        </form>
+        <p id="score">Score: 0</p>
+        <p id="highScore">High Score: 0</p>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal">
+        <div id="modal-content">
+            <span id="modal-message"></span>
+            <button class="btn" onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+    <footer>
+        Hacked together by ChatGPT 4.
+    </footer>
+
+    <script type="text/javascript" src="./js/transposition-quiz.js"></script>
+
+</body>
+
+</html>
