@@ -2,6 +2,7 @@ var loadSong = function() {
     var song = pickRandomFrom(songs);
     document.getElementById("song-title").innerText = song.title;
     document.getElementById("song-artist").innerText = getOrElseEmpty(song.artist);
+    document.getElementById("song-page").innerText = song.page ? "p" + song.page : "";
 }
 
 // On page load

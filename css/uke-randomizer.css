@@ -10,6 +10,13 @@ body {
 }
 
 h1 {
+    font-size: 0.8rem;
+    font-family: 'Bungee Inline', cursive;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+h2 {
     font-size: 1.5rem;
     line-height: 1.2;
     margin: 0.5em 0 0.5em;
@@ -21,16 +28,18 @@ h1 {
     hyphens: auto;
 }
 
-h2 {
+h3 {
     font-size: 1rem;
     line-height: 1.2;
+    margin: 0.5em 0 0.5em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
-h3 {
+h4 {
     font-size: 0.8rem;
-    font-family: 'Bungee Inline', cursive;
-    font-weight: 400;
-    line-height: 1.2;
+    line-height: 1.0;
+    margin: 0.5em 0 0.5em;
 }
 
 #randomizer {
@@ -53,7 +62,8 @@ html, body {
     margin-top: auto;
     margin-bottom: 0;
 }
-#song-artist {
+
+#song-page {
     margin-bottom: auto;
 }
 
